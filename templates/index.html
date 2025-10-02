@@ -7,12 +7,12 @@
     <h2>Translate between Indian Languages</h2>
     <form method="post" action="/translate">
         <label>Enter text:</label><br>
-        <textarea name="text" rows="3" cols="50">{{ original_text }}</textarea><br><br>
+        <textarea name="text" rows="3" cols="50">{{ original_text or "" }}</textarea><br><br>
 
         <label>Source Language:</label>
         <select name="src_lang">
             {% for code, name in languages.items() %}
-                <option value="{{ code }}" {% if src_selected == code %}selected{% endif %}>{{ name }}</option>
+                <option value="{{ code }}">{{ name }}</option>
             {% endfor %}
         </select>
         <br><br>
@@ -32,6 +32,14 @@
         <div style="border:1px solid #ccc; padding:10px; width:400px;">
             {{ translated_text }}
         </div>
+    {% endif %}
+
+    {% if audio_data %}
+        <h3>Listen:</h3>
+        <audio controls>
+            <source src="{{ audio_data }}" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
     {% endif %}
 </body>
 </html>
