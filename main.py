@@ -12,7 +12,6 @@ client = SarvamAI(api_subscription_key=api_key)
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
-# Language dictionary: code -> human-readable name
 LANGUAGES = {
     "bn-IN": "Bengali",
     "en-IN": "English",
